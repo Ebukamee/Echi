@@ -11,12 +11,12 @@ export default function EchiLanding() {
       {/* --- NAVIGATION --- */}
       <nav className="flex justify-between items-center max-w-6xl mx-auto px-6 py-8">
         <div className="flex items-center gap-2">
-            <div className="flex -space-x-1">
-                <div className="w-3.5 h-3.5 rounded-full bg-[#FFD600]" />
-                <div className="w-3.5 h-3.5 rounded-full bg-[#FF4D4D]" />
-                <div className="w-3.5 h-3.5 rounded-full bg-[#00D1FF]" />
-              </div>
-        <div className="text-2xl font-bold tracking-tight">Echi</div>
+          <div className="flex -space-x-1">
+            <div className="w-3.5 h-3.5 rounded-full bg-[#FFD600]" />
+            <div className="w-3.5 h-3.5 rounded-full bg-[#FF4D4D]" />
+            <div className="w-3.5 h-3.5 rounded-full bg-[#00D1FF]" />
+          </div>
+          <div className="text-2xl font-bold tracking-tight">Echi</div>
         </div>
         <button
           onClick={() => setIsModalOpen(true)}
@@ -68,8 +68,8 @@ export default function EchiLanding() {
               <Image
                 src="/heroin.jpg"
                 alt="Echi Time Capsule Illustration"
-                fill 
-                className="object-cover" 
+                fill
+                className="object-cover"
                 priority
               />
             </div>
@@ -123,33 +123,79 @@ export default function EchiLanding() {
                 </p>
               </div>
 
-              {/* Inputs */}
-              <div className="space-y-4 mb-8">
-                <textarea
-                  placeholder="Type your message here..."
-                  className="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#9A73FF] focus:ring-1 focus:ring-[#9A73FF] min-h-[160px] resize-y"
-                />
-                <input
-                  type="email"
-                  placeholder="Target email address"
-                  className="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#9A73FF] focus:ring-1 focus:ring-[#9A73FF]"
-                />
-                <input
-                  type="date"
-                  className="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:border-[#9A73FF] focus:ring-1 focus:ring-[#9A73FF]"
-                />
-              </div>
+              {/* --- FORM STARTS HERE --- */}
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  console.log("Form submitted!");
+                  // We will add the save logic here next!
+                }}
+              >
+                {/* Inputs */}
+                <div className="space-y-4 mb-8">
+                  <textarea
+                    required
+                    placeholder="Type your message here..."
+                    className="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#9A73FF] focus:ring-1 focus:ring-[#9A73FF] min-h-[160px] resize-y"
+                  />
+                  <input
+                    required
+                    type="email"
+                    placeholder="Target email address"
+                    className="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#9A73FF] focus:ring-1 focus:ring-[#9A73FF]"
+                  />
+                  <input
+                    required
+                    type="date"
+                    className="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:border-[#9A73FF] focus:ring-1 focus:ring-[#9A73FF]"
+                  />
 
-              {/* Primary CTA - Matching the Lilac color from the image */}
-              <button className="w-full py-3.5 bg-[#9A73FF] text-white font-bold rounded-lg hover:bg-[#885BFF] transition-colors mb-6">
-                Seal and Schedule
-              </button>
+                  {/* --- NEW FILE UPLOAD SECTION --- */}
+                  <div>
+                    <label className="flex flex-col items-center justify-center w-full p-4 bg-gray-50 border-2 border-dashed border-gray-200 rounded-lg cursor-pointer hover:bg-gray-100 hover:border-[#9A73FF] transition-colors">
+                      <div className="flex flex-col items-center justify-center space-y-2">
+                        <svg
+                          className="w-6 h-6 text-gray-400"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                          ></path>
+                        </svg>
+                        <span className="text-sm text-gray-500 font-medium">
+                          Click to attach images
+                        </span>
+                      </div>
+                      {/* The actual file input is hidden, the label acts as the button */}
+                      <input
+                        type="file"
+                        multiple
+                        accept="image/*"
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
+                </div>
+
+                {/* Primary CTA - Notice type="submit" */}
+                <button
+                  type="submit"
+                  className="w-full py-3.5 bg-[#9A73FF] text-white font-bold rounded-lg hover:bg-[#885BFF] transition-colors mb-6"
+                >
+                  Seal and Schedule
+                </button>
+              </form>
+              {/* --- FORM ENDS HERE --- */}
 
               {/* Footer text matching the small disclaimer text in the image */}
               <p className="text-[11px] text-gray-400 leading-relaxed border-t border-gray-100 pt-6">
-                If you did not sign up for this account you can ignore this
-                email and the account will be deleted. <br />
-                <br />© {new Date().getFullYear()} Company. All rights reserved.
+                <br />© {new Date().getFullYear()} Echi. All rights reserved.
                 You received this email because you signed up for an app that
                 helps you create your emails.
               </p>
