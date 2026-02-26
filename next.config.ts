@@ -4,13 +4,13 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
   },
-  images: {
+ images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'images.unsplash.com',
+        hostname: 'apdlpmbwlmscapgwkokh.supabase.co',
         port: '',
-        pathname: '/**',
+        pathname: '/storage/v1/object/public/**',
       },
     ],
   },
